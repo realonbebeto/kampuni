@@ -10,11 +10,11 @@ class Employee(Base):
     firstName = Column(String)
     midName = Column(String)
     lastName = Column(String)
-    email = Column(String)
+    email = Column(String, unique=True)
 
     department_id = Column(Integer, ForeignKey('departments.id'))
 
-    duty = relationship('Department', back_populates='departments')
+    owner = relationship('Department', back_populates='employees')
 
 class Department(Base):
     __tablename__ = 'departments'
@@ -22,4 +22,4 @@ class Department(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
     
-    employeesInDepartment = relationship('Employee', back_populates='employees')
+    employees = relationship('Employee', back_populates='owner')

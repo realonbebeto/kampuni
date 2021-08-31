@@ -10,8 +10,7 @@ def getAll(db: Session):
 
 def createEmployee(db: Session, request: Employee):
 
-    department = getDepartmentByID(id, db)
-    newEmployeeModel = Employee(firstName=request.firstName, middleName=request.midName, lastName=request.lastName, email=request.email, department=department)
+    newEmployeeModel = Employee(firstName=request.firstName, middleName=request.midName, lastName=request.lastName, email=request.email, department=request.department)
     db.add(newEmployeeModel)
     db.commit()
     db.refresh(newEmployeeModel)

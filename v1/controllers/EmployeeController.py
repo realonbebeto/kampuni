@@ -17,7 +17,7 @@ def getAll(db: Session = Depends(get_db)):
     return EmployeeRepo.getAll(db)
 
 @router.post('/', status_code=status.HTTP_201_CREATED)
-def createDepartment(request: HTTPResponse.Employee, db: Session = Depends(get_db)):
+def createEmployee(request: HTTPResponse.Employee, db: Session = Depends(get_db)):
     return EmployeeRepo.createEmployee(db, request)
 
 @router.delete('/{id}', status_code=status.HTTP_204_NO_CONTENT)
